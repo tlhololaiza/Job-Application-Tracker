@@ -1,90 +1,92 @@
-import './App.css'
-import Text from './components/Text/Text'
-import Button from './components/Button/Button'
-import Header from './components/Header/Header'
-import JobCard from './components/JobCard/JobCard'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Header from './components/Header';
+import Landing from './pages/Landing';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import Home from './pages/Home/Home';
+import JobDetails from './pages/JobDetails/JobDetails';
+import NotFound from './pages/NotFound/NotFound';
+import type { User } from './types';
+import './App.css';
 
 function App() {
+  const [, setUser] = useState<User | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for stored user session
+    const storedUser = localStorage.getItem('jobTracker_user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (userData: User) => {
+    setUser(userData);
+    setIsAuthenticated(true);
+    localStorage.setItem('jobTracker_user', JSON.stringify(userData));
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setIsAuthenticated(false);
+    localStorage.removeItem('jobTracker_user');
+    localStorage.removeItem('jobTracker_jobs');
+  };
+
+  const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+  };
 
   return (
-    <>
-      <div className="app-container">
-
-        
-        <Header isAuthenticated={true} onLogout={() => console.log('Logged out')} />
-
-        <main className="app-main">
-          <Text variant="p" size="md" weight="normal" color="secondary" align="left">
-            Keep track of your job applications with ease.
-          </Text>
-
-          <Button variant="primary" size="lg" fullWidth onClick={() => alert('Button Clicked!')}>
-            Add New Application
-          </Button>
-
-          <Button variant="secondary" size="md" className="mt-4">
-            View Applications
-          </Button>
+    <Router>
+      <div className="app">
+        <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route 
+              path="/login" 
+              element={
+                isAuthenticated ? 
+                <Navigate to="/home" replace /> : 
+                <Login onLogin={handleLogin} />
+              } 
+            />
+            <Route 
+              path="/register" 
+              element={
+                isAuthenticated ? 
+                <Navigate to="/home" replace /> : 
+                <Register onRegister={handleLogin} />
+              } 
+            />
+            <Route 
+              path="/home" 
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/job/:id" 
+              element={
+                <ProtectedRoute>
+                  <JobDetails />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
         </main>
-
-        <aside className="app-sidebar">
-          <Text variant="h2" size="xl" weight="semibold" color="primary" align="left">
-            Quick Links
-          </Text>
-          <ul className="sidebar-links">
-            <li><Button variant="ghost" size="sm">Dashboard</Button></li>
-            <li><Button variant="ghost" size="sm">Settings</Button></li>
-            <li><Button variant="ghost" size="sm">Help</Button></li>
-          </ul>
-        </aside>
-
-        <div className="app-content">
-          <Text variant="h3" size="lg" weight="medium" color="success" align="left">
-            Recent Applications
-          </Text>
-          <Text variant="p" size="sm" weight="normal" color="muted" align="left">
-            No applications found. Start adding your job applications!
-          </Text>
-        </div>
-
-        <div className="job-cards">
-          <JobCard 
-            job={{
-              id: '1',
-              companyName: 'Tech Corp',
-              role: 'Software Engineer',
-              status: 'Applied',
-              dateApplied: '2023-10-01',
-              description: 'Developing innovative software solutions.',
-            }} 
-            onEdit={(job) => console.log('Edit job:', job)}
-            onDelete={(id) => console.log('Delete job with id:', id)}
-          />
-          <JobCard 
-            job={{
-              id: '2',
-              companyName: 'Design Studio',
-              role: 'UI/UX Designer',
-              status: 'Interviewed',
-              dateApplied: '2023-10-05',
-              description: 'Creating user-friendly designs.',
-            }} 
-            onEdit={(job) => console.log('Edit job:', job)}
-            onDelete={(id) => console.log('Delete job with id:', id)}
-          />
-        </div>
-        
-        <footer className="app-footer">
-          <Text variant="p" size="sm" weight="light" color="muted" align="center">
-            © 2023 My App. All rights reserved.
-          </Text>
-        </footer>
-
-      </div> 
-
-
-    </>
-  )
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
