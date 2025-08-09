@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Text from '../Text/Text';
 import Button from '../Button/Button';
+import './Header.css'; 
 
 interface HeaderProps {
   isAuthenticated: boolean;
