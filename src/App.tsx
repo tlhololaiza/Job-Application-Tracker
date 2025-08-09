@@ -1,6 +1,8 @@
 import './App.css'
 import Text from './components/Text/Text'
 import Button from './components/Button/Button'
+import Header from './components/Header/Header'
+import JobCard from './components/JobCard/JobCard'
 
 function App() {
 
@@ -8,11 +10,8 @@ function App() {
     <>
       <div className="app-container">
 
-        <header className="app-header">
-          <Text variant="h1" size="3xl" weight="bold" color="primary" align="center">
-            Job Application Tracker
-          </Text>
-        </header>
+        
+        <Header isAuthenticated={true} onLogout={() => console.log('Logged out')} />
 
         <main className="app-main">
           <Text variant="p" size="md" weight="normal" color="secondary" align="left">
@@ -48,6 +47,32 @@ function App() {
           </Text>
         </div>
 
+        <div className="job-cards">
+          <JobCard 
+            job={{
+              id: '1',
+              companyName: 'Tech Corp',
+              role: 'Software Engineer',
+              status: 'Applied',
+              dateApplied: '2023-10-01',
+              description: 'Developing innovative software solutions.',
+            }} 
+            onEdit={(job) => console.log('Edit job:', job)}
+            onDelete={(id) => console.log('Delete job with id:', id)}
+          />
+          <JobCard 
+            job={{
+              id: '2',
+              companyName: 'Design Studio',
+              role: 'UI/UX Designer',
+              status: 'Interviewed',
+              dateApplied: '2023-10-05',
+              description: 'Creating user-friendly designs.',
+            }} 
+            onEdit={(job) => console.log('Edit job:', job)}
+            onDelete={(id) => console.log('Delete job with id:', id)}
+          />
+        </div>
         
         <footer className="app-footer">
           <Text variant="p" size="sm" weight="light" color="muted" align="center">
