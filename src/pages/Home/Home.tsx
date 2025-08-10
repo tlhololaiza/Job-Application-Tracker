@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Text from '../../components/Text/Text';
-import Button from '../../components/Button/Button';
-import JobCard from '../../components/JobCard/JobCard';
-import type { Job } from '../../types';
+import Text from '../../components/Text';
+import Button from '../../components/Button';
+import JobCard from '../../components/JobCard';
+import type { Job, User } from '../../types';
+import { getUserJobs, saveUserJobs } from '../../utils/storage';
 import './Home.css';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  user: User | null;
+}
+
+const Home: React.FC<HomeProps> = ({ user }) => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -29,13 +34,13 @@ const Home: React.FC = () => {
     notes: ''
   });
 
-  // Load jobs from localStorage
+  // Load jobs from localStorage for the current user
   useEffect(() => {
-    const storedJobs = localStorage.getItem('jobTracker_jobs');
-    if (storedJobs) {
-      setJobs(JSON.parse(storedJobs));
+    if (user) {
+      const userJobs = getUserJobs(user.id);
+      setJobs(userJobs);
     }
-  }, []);
+  }, [user]);
 
   // Update URL params when filters change
   useEffect(() => {
@@ -57,10 +62,12 @@ const Home: React.FC = () => {
     setSortOrder(sort);
   }, [searchParams]);
 
-  // Save jobs to localStorage
+  // Save jobs to localStorage for the current user
   const saveJobs = (updatedJobs: Job[]) => {
     setJobs(updatedJobs);
-    localStorage.setItem('jobTracker_jobs', JSON.stringify(updatedJobs));
+    if (user) {
+      saveUserJobs(user.id, updatedJobs);
+    }
   };
 
   // Filter and sort jobs

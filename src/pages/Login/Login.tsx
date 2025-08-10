@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import type { User } from '../../types';
+import { findUser, migrateOldJobsToUser } from '../../utils/storage';
 import './Login.css';
 
 interface LoginProps {
@@ -25,11 +26,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Simple validation - in real app, this would be API call
-      const storedUsers = JSON.parse(localStorage.getItem('jobTracker_users') || '[]');
-      const user = storedUsers.find((u: User) => u.username === username && u.password === password);
+      // Find user using utility function
+      const user = findUser(username, password);
       
       if (user) {
+        // Migrate any old jobs to this user's storage
+        migrateOldJobsToUser(user.id);
+        
         onLogin(user);
         navigate('/home');
       } else {

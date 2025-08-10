@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Text from '../Text/Text';
-import Button from '../Button/Button';
+import Text from '../Text';
+import Button from '../Button';
 import type { Job } from '../../types';
 import './JobCard.css';
 

@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Text from '../Text/Text';
-import Button from '../Button/Button';
-import './Header.css'; 
+import Text from '../Text';
+import Button from '../Button';
+import type { User } from '../../types';
+import './Header.css';
 
 interface HeaderProps {
   isAuthenticated: boolean;
   onLogout: () => void;
+  user: User | null;
 }
 
-const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLogout }) => {
+const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLogout, user }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -30,6 +32,11 @@ const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLogout }) => {
           <nav className="header-nav">
             {isAuthenticated ? (
               <>
+                {user && (
+                  <Text variant="span" size="md" weight="medium" className="logged-in-user">
+                    Welcome, {user.username}
+                  </Text>
+                )}
                 <Link to="/home" className="nav-link">
                   <Text variant="span" size="md" weight="medium">
                     Dashboard

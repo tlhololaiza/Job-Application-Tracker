@@ -2,24 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import type { Job } from '../../types';
+import type { Job, User } from '../../types';
+import { getJobForUser } from '../../utils/storage';
 import './JobDetails.css';
 
-const JobDetails: React.FC = () => {
+interface JobDetailsProps {
+  user: User | null;
+}
+
+const JobDetails: React.FC<JobDetailsProps> = ({ user }) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [job, setJob] = useState<Job | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedJobs = localStorage.getItem('jobTracker_jobs');
-    if (storedJobs && id) {
-      const jobs: Job[] = JSON.parse(storedJobs);
-      const foundJob = jobs.find(j => j.id === id);
-      setJob(foundJob || null);
+    if (user && id) {
+      const foundJob = getJobForUser(user.id, id);
+      setJob(foundJob);
     }
     setLoading(false);
-  }, [id]);
+  }, [id, user]);
 
   const getStatusClass = (status: string) => {
     switch (status.toLowerCase()) {

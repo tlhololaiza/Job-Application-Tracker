@@ -80,3 +80,18 @@
   }
 }
 
+
+
+.logged-in-user {
+  margin-right: 15px;
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-md);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .logged-in-user {
+    display: none; /* Hide on smaller screens if space is an issue */
+  }
+}
+

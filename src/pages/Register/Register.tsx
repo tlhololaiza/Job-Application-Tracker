@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import type { User } from '../../types';
+import { userExists, saveUser } from '../../utils/storage';
 import './Register.css';
 
 interface RegisterProps {
@@ -37,11 +38,8 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Check if user already exists
-      const storedUsers = JSON.parse(localStorage.getItem('jobTracker_users') || '[]');
-      const existingUser = storedUsers.find((u: User) => u.username === username);
-      
-      if (existingUser) {
+      // Check if user already exists using utility function
+      if (userExists(username)) {
         setError('Username already exists');
         return;
       }
@@ -53,9 +51,8 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
         password
       };
 
-      // Store user
-      const updatedUsers = [...storedUsers, newUser];
-      localStorage.setItem('jobTracker_users', JSON.stringify(updatedUsers));
+      // Save user using utility function
+      saveUser(newUser);
       
       onRegister(newUser);
       navigate('/home');
