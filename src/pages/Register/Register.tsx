@@ -39,7 +39,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Check if user already exists using utility function
-      if (userExists(username)) {
+      if (await userExists(username)) {
         setError('Username already exists');
         return;
       }
@@ -52,7 +52,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       };
 
       // Save user using utility function
-      saveUser(newUser);
+  await saveUser(newUser);
       
       onRegister(newUser);
       navigate('/home');

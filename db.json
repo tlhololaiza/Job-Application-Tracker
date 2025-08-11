@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": "1754840692765",
+      "username": "tlholo",
+      "password": "123456"
+    },
+    {
+      "id": "1754897452699",
+      "username": "tshwane",
+      "password": "123456"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1754840784270",
+      "companyName": "CodeTribe ",
+      "role": "Trainee",
+      "status": "Interviewed",
+      "dateApplied": "2025-08-10",
+      "description": "Training to become a web dev",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": ""
+    },
+    {
+      "id": "1754846123198",
+      "companyName": "Amazon",
+      "role": "Admin",
+      "status": "Applied",
+      "dateApplied": "2025-07-10",
+      "description": "Admin role at Amazon",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": ""
+    }
+  ]
+}

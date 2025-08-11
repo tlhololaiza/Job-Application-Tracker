@@ -17,11 +17,14 @@ const JobDetails: React.FC<JobDetailsProps> = ({ user }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user && id) {
-      const foundJob = getJobForUser(user.id, id);
-      setJob(foundJob);
-    }
-    setLoading(false);
+    const fetchJob = async () => {
+      if (user && id) {
+        const foundJob = await getJobForUser(user.id, id);
+        setJob(foundJob);
+      }
+      setLoading(false);
+    };
+    fetchJob();
   }, [id, user]);
 
   const getStatusClass = (status: string) => {

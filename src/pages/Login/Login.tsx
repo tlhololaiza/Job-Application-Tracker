@@ -27,12 +27,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Find user using utility function
-      const user = findUser(username, password);
-      
+      const user = await findUser(username, password);
       if (user) {
         // Migrate any old jobs to this user's storage
-        migrateOldJobsToUser(user.id);
-        
+        await migrateOldJobsToUser(user.id);
         onLogin(user);
         navigate('/home');
       } else {

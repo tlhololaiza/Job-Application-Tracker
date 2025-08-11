@@ -37,8 +37,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   // Load jobs from localStorage for the current user
   useEffect(() => {
     if (user) {
-      const userJobs = getUserJobs(user.id);
-      setJobs(userJobs);
+      getUserJobs(user.id).then(setJobs);
     }
   }, [user]);
 
@@ -63,10 +62,10 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   }, [searchParams]);
 
   // Save jobs to localStorage for the current user
-  const saveJobs = (updatedJobs: Job[]) => {
+  const saveJobs = async (updatedJobs: Job[]) => {
     setJobs(updatedJobs);
     if (user) {
-      saveUserJobs(user.id, updatedJobs);
+      await saveUserJobs(user.id, updatedJobs);
     }
   };
 
