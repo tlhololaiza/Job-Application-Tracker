@@ -69,6 +69,8 @@ export const addJobForUser = async (userId: string, job: Job): Promise<void> => 
 };
 
 export const updateJobForUser = async (userId: string, jobId: string, updatedJob: Partial<Job>): Promise<void> => {
+  // userId retained for potential server-side authorization; currently unused in the mock API
+  void userId;
   await fetch(`${API_URL}/jobs/${jobId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
@@ -77,6 +79,8 @@ export const updateJobForUser = async (userId: string, jobId: string, updatedJob
 };
 
 export const deleteJobForUser = async (userId: string, jobId: string): Promise<void> => {
+  // userId retained for potential server-side authorization; currently unused in the mock API
+  void userId;
   await fetch(`${API_URL}/jobs/${jobId}`, { method: 'DELETE' });
 };
 
@@ -87,5 +91,8 @@ export const getJobForUser = async (userId: string, jobId: string): Promise<Job 
   return job.userId === userId ? job : null;
 };
 
-export const migrateOldJobsToUser = async (userId: string): Promise<void> => {};
+export const migrateOldJobsToUser = async (userId: string): Promise<void> => {
+  // No legacy storage to migrate yet; keep signature for future data moves
+  void userId;
+};
 
