@@ -34,6 +34,12 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     notes: ''
   });
 
+  // Summary stats
+  const totalApplications = jobs.length;
+  const interviewedCount = jobs.filter(job => job.status === 'Interviewed').length;
+  const offeredCount = jobs.filter(job => job.status === 'Offered').length;
+  const rejectedCount = jobs.filter(job => job.status === 'Rejected').length;
+
   // Load jobs from localStorage for the current user
   useEffect(() => {
     if (user) {
@@ -148,17 +154,57 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   return (
     <div className="home-page">
       <div className="container">
-        <div className="page-container">
-          <div className="page-header">
-            <Text variant="h1" size="3xl" weight="bold" color="primary">
-              Job Applications
-            </Text>
-            <Text variant="p" size="lg" color="secondary">
-              Track and manage your job applications
-            </Text>
+        <div className="dashboard">
+          <div className="dashboard-top">
+            <div>
+              <Text variant="h1" size="3xl" weight="bold" color="primary">
+                Dashboard
+              </Text>
+              <Text variant="p" size="lg" color="secondary">
+                Track and manage your job applications
+              </Text>
+            </div>
+            <Button
+              variant="primary"
+              size="md"
+              onClick={() => setShowAddForm(true)}
+            >
+              Add Application
+            </Button>
           </div>
 
-          <div className="controls-section">
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-icon stat-total">📦</div>
+              <div>
+                <p className="stat-label">Total Applications</p>
+                <p className="stat-value">{totalApplications}</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-interviewed">👥</div>
+              <div>
+                <p className="stat-label">Interviewed</p>
+                <p className="stat-value">{interviewedCount}</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-offered">🏆</div>
+              <div>
+                <p className="stat-label">Offers Received</p>
+                <p className="stat-value">{offeredCount}</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon stat-rejected">✖</div>
+              <div>
+                <p className="stat-label">Rejected</p>
+                <p className="stat-value">{rejectedCount}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="controls-bar">
             <div className="search-controls">
               <input
                 type="text"
@@ -168,8 +214,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                 className="search-input"
               />
             </div>
-            
-            <div className="filter-controls">
+            <div className="controls-right">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -181,7 +226,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                 <option value="Offered">Offered</option>
                 <option value="Rejected">Rejected</option>
               </select>
-              
+
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
@@ -190,14 +235,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                 <option value="desc">Newest First</option>
                 <option value="asc">Oldest First</option>
               </select>
-              
-              <Button
-                variant="primary"
-                size="md"
-                onClick={() => setShowAddForm(true)}
-              >
-                Add Job
-              </Button>
             </div>
           </div>
 
@@ -286,12 +323,16 @@ const Home: React.FC<HomeProps> = ({ user }) => {
           <div className="jobs-section">
             {filteredJobs.length === 0 ? (
               <div className="empty-state">
+                <div className="empty-icon">👜</div>
                 <Text variant="h3" size="lg" weight="medium" color="secondary" align="center">
-                  {jobs.length === 0 ? 'No job applications yet' : 'No jobs match your search'}
+                  {jobs.length === 0 ? 'No applications yet' : 'No jobs match your search'}
                 </Text>
                 <Text variant="p" size="md" color="muted" align="center">
-                  {jobs.length === 0 ? 'Add your first job application to get started' : 'Try adjusting your search or filters'}
+                  {jobs.length === 0 ? 'Add your first job application to get started.' : 'Try adjusting your search or filters.'}
                 </Text>
+                <Button variant="primary" size="md" onClick={() => setShowAddForm(true)}>
+                  Add Your First Application
+                </Button>
               </div>
             ) : (
               <div className="jobs-grid">
