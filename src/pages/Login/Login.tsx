@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
+import { useToast } from '../../context/ToastContext';
 import type { User } from '../../types';
 import { findUser, migrateOldJobsToUser } from '../../utils/storage';
 import './Login.css';
@@ -13,13 +14,12 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
 
     try {
@@ -32,12 +32,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         // Migrate any old jobs to this user's storage
         await migrateOldJobsToUser(user.id);
         onLogin(user);
+        showToast('Login successful!', 'success');
         navigate('/home');
       } else {
-        setError('Invalid username or password');
+        showToast('Invalid email or password. Please try again.', 'error');
       }
     } catch (err) {
-      setError('Login failed. Please try again.');
+      showToast('Login failed. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
@@ -90,14 +91,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 disabled={loading}
               />
             </div>
-
-            {error && (
-              <div className="form-error">
-                <Text variant="p" size="sm" color="error">
-                  {error}
-                </Text>
-              </div>
-            )}
 
             <Button
               type="submit"

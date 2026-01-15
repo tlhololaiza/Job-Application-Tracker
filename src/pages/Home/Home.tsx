@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import JobCard from '../../components/JobCard';
+import ConfirmDialog from '../../components/ConfirmDialog';
 import type { Job, User } from '../../types';
 import { getUserJobs, saveUserJobs } from '../../utils/storage';
 import './Home.css';
@@ -19,6 +20,10 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingJob, setEditingJob] = useState<Job | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [deleteConfirm, setDeleteConfirm] = useState<{ isOpen: boolean; jobId: string | null }>({
+    isOpen: false,
+    jobId: null
+  });
 
   // Form state
   const [formData, setFormData] = useState({
@@ -111,9 +116,14 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   };
 
   const handleDeleteJob = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this job application?')) {
-      const updatedJobs = jobs.filter(job => job.id !== id);
+    setDeleteConfirm({ isOpen: true, jobId: id });
+  };
+
+  const confirmDelete = () => {
+    if (deleteConfirm.jobId) {
+      const updatedJobs = jobs.filter(job => job.id !== deleteConfirm.jobId);
       saveJobs(updatedJobs);
+      setDeleteConfirm({ isOpen: false, jobId: null });
     }
   };
 
@@ -347,6 +357,17 @@ const Home: React.FC<HomeProps> = ({ user }) => {
               </div>
             )}
           </div>
+
+          <ConfirmDialog
+            isOpen={deleteConfirm.isOpen}
+            title="Delete Job Application?"
+            message="Are you sure you want to delete this job application? This action cannot be undone."
+            confirmText="Delete"
+            cancelText="Cancel"
+            isDangerous={true}
+            onConfirm={confirmDelete}
+            onCancel={() => setDeleteConfirm({ isOpen: false, jobId: null })}
+          />
         </div>
       </div>
     </div>

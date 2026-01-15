@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
+import { useToast } from '../../context/ToastContext';
 import type { User } from '../../types';
 import { userExists, saveUser } from '../../utils/storage';
 import './Register.css';
@@ -14,24 +15,23 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
 
     try {
       // Validation
       if (password !== confirmPassword) {
-        setError('Passwords do not match');
+        showToast('Passwords do not match', 'error');
         return;
       }
 
       if (password.length < 6) {
-        setError('Password must be at least 6 characters long');
+        showToast('Password must be at least 6 characters long', 'error');
         return;
       }
 
@@ -40,7 +40,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       
       // Check if user already exists using utility function
       if (await userExists(username)) {
-        setError('Username already exists');
+        showToast('Username already exists', 'error');
         return;
       }
 
@@ -54,10 +54,11 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       // Save user using utility function
   await saveUser(newUser);
       
+      showToast('Account created successfully!', 'success');
       onRegister(newUser);
       navigate('/home');
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      showToast('Registration failed. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
@@ -130,14 +131,6 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
                 minLength={6}
               />
             </div>
-
-            {error && (
-              <div className="form-error">
-                <Text variant="p" size="sm" color="error">
-                  {error}
-                </Text>
-              </div>
-            )}
 
             <Button
               type="submit"

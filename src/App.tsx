@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
+import Toast from './components/Toast/Toast';
 import Landing from './pages/Landing';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Home from './pages/Home/Home';
 import JobDetails from './pages/JobDetails/JobDetails';
 import NotFound from './pages/NotFound/NotFound';
+import { ToastProvider, useToast } from './context/ToastContext';
 import type { User } from './types';
 import './App.css';
 
-function App() {
+function AppContent() {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { messages, removeToast } = useToast();
 
   useEffect(() => {
     // Check for stored user session
@@ -41,7 +44,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <div className="app">
         <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} />
         <main className="main-content">
@@ -84,7 +87,18 @@ function App() {
           </Routes>
         </main>
       </div>
-    </Router>
+      <Toast messages={messages} onRemove={removeToast} />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <ToastProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ToastProvider>
   );
 }
 
