@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "1768515422021",
+      "username": "tlholo",
+      "password": "password"
+    },
+    {
+      "id": "1768515496959",
+      "username": "tshwane",
+      "password": "123456"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1768515477806",
+      "companyName": "mLab",
+      "role": "Trainee",
+      "status": "Rejected",
+      "dateApplied": "2025-10-16",
+      "description": "Coding",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1768515422021"
+    },
+    {
+      "id": "1768515605795",
+      "companyName": "Shoprite",
+      "role": "Cashier",
+      "status": "Interviewed",
+      "dateApplied": "2026-01-15",
+      "description": "Till work",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1768515496959"
+    },
+    {
+      "id": "1768515631960",
+      "companyName": "CodeTribe",
+      "role": "Trainee",
+      "status": "Applied",
+      "dateApplied": "2026-01-15",
+      "description": "web dev",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1768515496959"
+    }
+  ]
+}

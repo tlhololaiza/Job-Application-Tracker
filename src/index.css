@@ -1,0 +1,381 @@
+/* Global CSS Reset and Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color Palette - Linear/Notion Inspired */
+  --color-navy: hsl(222 47% 20%);
+  --color-navy-light: hsl(222 47% 30%);
+  --color-navy-dark: hsl(222 47% 15%);
+  --color-teal: hsl(173 58% 39%);
+  --color-teal-light: hsl(173 58% 50%);
+  --color-teal-dark: hsl(173 58% 30%);
+  --color-off-white: hsl(210 20% 98%);
+  --color-white: hsl(0 0% 100%);
+  
+  /* Status Colors */
+  --color-status-applied: hsl(217 91% 60%);
+  --color-status-applied-bg: hsl(217 91% 95%);
+  --color-status-interviewed: hsl(38 92% 50%);
+  --color-status-interviewed-bg: hsl(38 92% 95%);
+  --color-status-offered: hsl(142 71% 45%);
+  --color-status-offered-bg: hsl(142 71% 95%);
+  --color-status-rejected: hsl(0 84% 60%);
+  --color-status-rejected-bg: hsl(0 84% 95%);
+  
+  /* Gray Scale */
+  --color-gray-50: hsl(210 20% 98%);
+  --color-gray-100: hsl(210 17% 95%);
+  --color-gray-200: hsl(210 16% 88%);
+  --color-gray-300: hsl(210 14% 78%);
+  --color-gray-400: hsl(210 11% 65%);
+  --color-gray-500: hsl(210 9% 50%);
+  --color-gray-600: hsl(210 10% 40%);
+  --color-gray-700: hsl(210 12% 30%);
+  --color-gray-800: hsl(210 15% 20%);
+  --color-gray-900: hsl(210 20% 12%);
+  
+  /* Semantic Colors */
+  --color-primary: var(--color-navy);
+  --color-primary-light: var(--color-navy-light);
+  --color-primary-dark: var(--color-navy-dark);
+  --color-accent: var(--color-teal);
+  --color-accent-light: var(--color-teal-light);
+  --color-accent-dark: var(--color-teal-dark);
+  --color-background: var(--color-off-white);
+  --color-surface: var(--color-white);
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-muted: var(--color-gray-500);
+  --color-border: var(--color-gray-200);
+  --color-border-focus: var(--color-teal);
+  
+  --color-success: hsl(142 71% 45%);
+  --color-success-dark: hsl(142 71% 35%);
+  --color-success-light: hsl(142 71% 95%);
+  
+  --color-warning: hsl(38 92% 50%);
+  --color-warning-dark: hsl(38 92% 40%);
+  --color-warning-light: hsl(38 92% 95%);
+  
+  --color-error: hsl(0 84% 60%);
+  --color-error-dark: hsl(0 84% 50%);
+  --color-error-light: hsl(0 84% 95%);
+  
+  /* Typography */
+  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family: var(--font-body);
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-28: 7rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows - Elevated & Soft */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-Index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-modal: 1050;
+  --z-tooltip: 1070;
+}
+
+/* Base Styles */
+html {
+  font-family: var(--font-family);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-gray-800);
+  background-color: var(--color-gray-50);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Link Styles */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Button Reset */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Input Styles */
+input, textarea, select {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-3) var(--spacing-4);
+  transition: var(--transition-normal);
+  background-color: var(--color-white);
+  color: var(--color-gray-800);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-weight: 500;
+  color: var(--color-gray-700);
+}
+
+.form-error {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: var(--spacing-2);
+}
+
+.gap-4 {
+  gap: var(--spacing-4);
+}
+
+.gap-6 {
+  gap: var(--spacing-6);
+}
+
+/* Spacing Utilities */
+.mt-4 { margin-top: var(--spacing-4); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.ml-4 { margin-left: var(--spacing-4); }
+.mr-4 { margin-right: var(--spacing-4); }
+.mx-4 { margin-left: var(--spacing-4); margin-right: var(--spacing-4); }
+.my-4 { margin-top: var(--spacing-4); margin-bottom: var(--spacing-4); }
+
+.p-4 { padding: var(--spacing-4); }
+.px-4 { padding-left: var(--spacing-4); padding-right: var(--spacing-4); }
+.py-4 { padding-top: var(--spacing-4); padding-bottom: var(--spacing-4); }
+
+/* Card Styles */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-6);
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Status Colors */
+.status-applied {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.status-interviewed {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.status-rejected {
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 320px) {
+  .container {
+    padding: 0 var(--spacing-2);
+  }
+  
+  :root {
+    --font-size-3xl: 1.5rem;
+    --font-size-2xl: 1.25rem;
+  }
+}
+
+@media (min-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-6);
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-8);
+  }
+  
+  :root {
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-10);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 var(--spacing-4);
+  }
+  
+  :root {
+    --font-size-4xl: 3.5rem;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+

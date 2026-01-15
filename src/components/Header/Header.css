@@ -1,0 +1,112 @@
+.header {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  transition: all var(--transition-normal);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) 0;
+}
+
+.header-logo {
+  text-decoration: none;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.header-logo:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+}
+
+.nav-link:hover {
+  background-color: var(--color-gray-100);
+  text-decoration: none;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* Responsive Design */
+@media (max-width: 320px) {
+  .header-content {
+    padding: var(--spacing-3) 0;
+  }
+  
+  .header-nav {
+    gap: var(--spacing-2);
+  }
+  
+  .auth-buttons {
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    padding: var(--spacing-5) 0;
+  }
+  
+  .header-nav {
+    gap: var(--spacing-6);
+  }
+}
+
+
+
+.logged-in-user {
+  margin-right: 15px;
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-md);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .logged-in-user {
+    display: none; /* Hide on smaller screens if space is an issue */
+  }
+}
+
