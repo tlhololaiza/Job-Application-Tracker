@@ -24,7 +24,6 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
     setLoading(true);
 
     try {
-      // Validation
       if (password !== confirmPassword) {
         showToast('Passwords do not match', 'error');
         return;
@@ -35,24 +34,20 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
         return;
       }
 
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Check if user already exists using utility function
       if (await userExists(username)) {
         showToast('Username already exists', 'error');
         return;
       }
 
-      // Create new user
       const newUser: User = {
         id: Date.now().toString(),
         username,
         password
       };
 
-      // Save user using utility function
-  await saveUser(newUser);
+      await saveUser(newUser);
       
       showToast('Account created successfully!', 'success');
       onRegister(newUser);

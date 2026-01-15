@@ -25,7 +25,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     jobId: null
   });
 
-  // Form state
   const [formData, setFormData] = useState({
     companyName: '',
     role: '',
@@ -39,20 +38,17 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     notes: ''
   });
 
-  // Summary stats
   const totalApplications = jobs.length;
   const interviewedCount = jobs.filter(job => job.status === 'Interviewed').length;
-  const offeredCount = jobs.filter(job => job.status === 'Offered').length;
+  const appliedCount = jobs.filter(job => job.status === 'Applied').length;
   const rejectedCount = jobs.filter(job => job.status === 'Rejected').length;
 
-  // Load jobs from localStorage for the current user
   useEffect(() => {
     if (user) {
       getUserJobs(user.id).then(setJobs);
     }
   }, [user]);
 
-  // Update URL params when filters change
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchTerm) params.set('search', searchTerm);
@@ -61,7 +57,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     setSearchParams(params);
   }, [searchTerm, statusFilter, sortOrder, setSearchParams]);
 
-  // Read URL params on mount
   useEffect(() => {
     const search = searchParams.get('search') || '';
     const status = searchParams.get('status') || 'all';
@@ -72,7 +67,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     setSortOrder(sort);
   }, [searchParams]);
 
-  // Save jobs to localStorage for the current user
   const saveJobs = async (updatedJobs: Job[]) => {
     setJobs(updatedJobs);
     if (user) {
@@ -80,7 +74,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     }
   };
 
-  // Filter and sort jobs
   const filteredJobs = jobs
     .filter(job => {
       const matchesSearch = job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -199,10 +192,10 @@ const Home: React.FC<HomeProps> = ({ user }) => {
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon stat-offered">🏆</div>
+              <div className="stat-icon stat-applied">📝</div>
               <div>
-                <p className="stat-label">Offers Received</p>
-                <p className="stat-value">{offeredCount}</p>
+                <p className="stat-label">Applied</p>
+                <p className="stat-value">{appliedCount}</p>
               </div>
             </div>
             <div className="stat-card">
@@ -233,7 +226,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                 <option value="all">All Status</option>
                 <option value="Applied">Applied</option>
                 <option value="Interviewed">Interviewed</option>
-                <option value="Offered">Offered</option>
                 <option value="Rejected">Rejected</option>
               </select>
 
@@ -292,7 +284,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                       >
                         <option value="Applied">Applied</option>
                         <option value="Interviewed">Interviewed</option>
-                        <option value="Offered">Offered</option>
                         <option value="Rejected">Rejected</option>
                       </select>
                     </div>

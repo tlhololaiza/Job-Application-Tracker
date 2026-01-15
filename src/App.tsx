@@ -18,7 +18,6 @@ function AppContent() {
   const { messages, removeToast } = useToast();
 
   useEffect(() => {
-    // Check for stored user session
     const storedUser = localStorage.getItem('jobTracker_user');
     if (storedUser) {
       const userData = JSON.parse(storedUser);

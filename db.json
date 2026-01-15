@@ -1,42 +1,58 @@
 {
   "users": [
     {
-      "id": "1754840692765",
+      "id": "1768515422021",
       "username": "tlholo",
-      "password": "123456"
+      "password": "password"
     },
     {
-      "id": "1754897452699",
+      "id": "1768515496959",
       "username": "tshwane",
       "password": "123456"
     }
   ],
   "jobs": [
     {
-      "id": "1754840784270",
-      "companyName": "CodeTribe ",
+      "id": "1768515477806",
+      "companyName": "mLab",
       "role": "Trainee",
-      "status": "Interviewed",
-      "dateApplied": "2025-08-10",
-      "description": "Training to become a web dev",
+      "status": "Rejected",
+      "dateApplied": "2025-10-16",
+      "description": "Coding",
       "requirements": "",
       "duties": "",
       "contactDetails": "",
       "address": "",
-      "notes": ""
+      "notes": "",
+      "userId": "1768515422021"
     },
     {
-      "id": "1754846123198",
-      "companyName": "Amazon",
-      "role": "Admin",
-      "status": "Offered",
-      "dateApplied": "2025-07-10",
-      "description": "Admin role at Amazon",
+      "id": "1768515605795",
+      "companyName": "Shoprite",
+      "role": "Cashier",
+      "status": "Interviewed",
+      "dateApplied": "2026-01-15",
+      "description": "Till work",
       "requirements": "",
       "duties": "",
       "contactDetails": "",
       "address": "",
-      "notes": ""
+      "notes": "",
+      "userId": "1768515496959"
+    },
+    {
+      "id": "1768515631960",
+      "companyName": "CodeTribe",
+      "role": "Trainee",
+      "status": "Applied",
+      "dateApplied": "2026-01-15",
+      "description": "web dev",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1768515496959"
     }
   ]
 }

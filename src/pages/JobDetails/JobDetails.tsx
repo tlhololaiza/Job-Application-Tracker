@@ -19,8 +19,7 @@ const JobDetails: React.FC<JobDetailsProps> = ({ user }) => {
   useEffect(() => {
     const fetchJob = async () => {
       if (user && id) {
-        const foundJob = await getJobForUser(user.id, id);
-        setJob(foundJob);
+        setJob(await getJobForUser(user.id, id));
       }
       setLoading(false);
     };
@@ -33,8 +32,6 @@ const JobDetails: React.FC<JobDetailsProps> = ({ user }) => {
         return 'status-applied';
       case 'interviewed':
         return 'status-interviewed';
-      case 'offered':
-        return 'status-offered';
       case 'rejected':
         return 'status-rejected';
       default:

@@ -2,7 +2,6 @@ import type { Job, User } from '../types';
 
 const API_URL = 'http://localhost:3001';
 
-// User management functions
 export const getStoredUsers = async (): Promise<User[]> => {
   const res = await fetch(`${API_URL}/users`);
   if (!res.ok) return [];
@@ -41,8 +40,6 @@ export const userExists = async (username: string): Promise<boolean> => {
   return users.length > 0;
 };
 
-// Job management functions
-// Not needed with JSON Server, but kept for compatibility
 export const getUserJobsKey = (userId: string): string => {
   return `jobTracker_jobs_${userId}`;
 };
@@ -54,13 +51,12 @@ export const getUserJobs = async (userId: string): Promise<Job[]> => {
 };
 
 export const saveUserJobs = async (userId: string, jobs: Job[]): Promise<void> => {
-  // Remove all jobs for user, then add all
   const currentJobs = await getUserJobs(userId);
   await Promise.all(currentJobs.map(j => fetch(`${API_URL}/jobs/${j.id}`, { method: 'DELETE' })));
   await Promise.all(jobs.map(job => fetch(`${API_URL}/jobs`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(job)
+    body: JSON.stringify({ ...job, userId })
   })));
 };
 

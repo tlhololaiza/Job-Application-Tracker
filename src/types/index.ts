@@ -1,8 +1,9 @@
 export interface Job {
   id: string;
+  userId?: string;
   companyName: string;
   role: string;
-  status: 'Applied' | 'Interviewed' | 'Offered' | 'Rejected';
+  status: 'Applied' | 'Interviewed' | 'Rejected';
   dateApplied: string;
   description?: string;
   requirements?: string;

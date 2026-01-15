@@ -23,13 +23,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setLoading(true);
 
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Find user using utility function
       const user = await findUser(username, password);
       if (user) {
-        // Migrate any old jobs to this user's storage
         await migrateOldJobsToUser(user.id);
         onLogin(user);
         showToast('Login successful!', 'success');
