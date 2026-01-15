@@ -91,6 +91,5 @@ export const getJobForUser = async (userId: string, jobId: string): Promise<Job 
   return job.userId === userId ? job : null;
 };
 
-// Migration function is not needed with JSON Server, so it's now a no-op
 export const migrateOldJobsToUser = async (userId: string): Promise<void> => {};
 

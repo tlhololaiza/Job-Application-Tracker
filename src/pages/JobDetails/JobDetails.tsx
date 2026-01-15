@@ -33,6 +33,8 @@ const JobDetails: React.FC<JobDetailsProps> = ({ user }) => {
         return 'status-applied';
       case 'interviewed':
         return 'status-interviewed';
+      case 'offered':
+        return 'status-offered';
       case 'rejected':
         return 'status-rejected';
       default:

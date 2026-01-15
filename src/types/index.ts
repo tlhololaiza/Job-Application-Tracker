@@ -2,7 +2,7 @@ export interface Job {
   id: string;
   companyName: string;
   role: string;
-  status: 'Applied' | 'Interviewed' | 'Rejected';
+  status: 'Applied' | 'Interviewed' | 'Offered' | 'Rejected';
   dateApplied: string;
   description?: string;
   requirements?: string;

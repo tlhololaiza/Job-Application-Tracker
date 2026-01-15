@@ -20,34 +20,40 @@
 
 .job-status-badge {
   padding: var(--spacing-2) var(--spacing-4);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
 .job-status-badge.status-applied {
-  background-color: var(--color-warning-light);
-  color: var(--color-warning-dark);
+  background-color: var(--color-status-applied-bg);
+  color: var(--color-status-applied);
 }
 
 .job-status-badge.status-interviewed {
-  background-color: var(--color-success-light);
-  color: var(--color-success-dark);
+  background-color: var(--color-status-interviewed-bg);
+  color: var(--color-status-interviewed);
+}
+
+.job-status-badge.status-offered {
+  background-color: var(--color-status-offered-bg);
+  color: var(--color-status-offered);
 }
 
 .job-status-badge.status-rejected {
-  background-color: var(--color-error-light);
-  color: var(--color-error-dark);
+  background-color: var(--color-status-rejected-bg);
+  color: var(--color-status-rejected);
 }
 
 .job-details-content {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  border: 1px solid var(--color-border);
 }
 
 .details-grid {
@@ -91,27 +97,32 @@
 }
 
 .status-inline {
-  padding: var(--spacing-1) var(--spacing-3);
-  border-radius: var(--radius-md);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .status-inline.status-applied {
-  background-color: var(--color-warning-light);
-  color: var(--color-warning-dark);
+  background-color: var(--color-status-applied-bg);
+  color: var(--color-status-applied);
 }
 
 .status-inline.status-interviewed {
-  background-color: var(--color-success-light);
-  color: var(--color-success-dark);
+  background-color: var(--color-status-interviewed-bg);
+  color: var(--color-status-interviewed);
+}
+
+.status-inline.status-offered {
+  background-color: var(--color-status-offered-bg);
+  color: var(--color-status-offered);
 }
 
 .status-inline.status-rejected {
-  background-color: var(--color-error-light);
-  color: var(--color-error-dark);
+  background-color: var(--color-status-rejected-bg);
+  color: var(--color-status-rejected);
 }
 
 .job-actions {

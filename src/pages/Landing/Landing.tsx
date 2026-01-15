@@ -10,17 +10,17 @@ const Landing: React.FC = () => {
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
-            <Text variant="h1" size="3xl" weight="bold" color="primary" align="center">
-              Track Your Job Applications
-            </Text>
-            <Text variant="p" size="lg" color="secondary" align="center" className="hero-subtitle">
-              Stay organized and never lose track of your job applications again. 
-              Monitor your progress, manage interviews, and land your dream job.
-            </Text>
+            <h1 className="hero-title">
+              Land Your Dream Job with<br />
+              <span className="hero-highlight">Organized Tracking</span>
+            </h1>
+            <p className="hero-subtitle">
+              Stop losing track of applications. JobTracker helps you manage, organize, and stay on top of your entire job search journey.
+            </p>
             <div className="hero-actions">
               <Link to="/register">
                 <Button variant="primary" size="lg">
-                  Get Started
+                  Start Tracking Free →
                 </Button>
               </Link>
               <Link to="/login">
@@ -35,53 +35,46 @@ const Landing: React.FC = () => {
 
       <section className="features-section">
         <div className="container">
-          <Text variant="h2" size="2xl" weight="bold" color="primary" align="center" className="section-title">
-            Why Choose JobTracker?
-          </Text>
+          <div className="features-header">
+            <h2 className="features-title">Everything You Need to Succeed</h2>
+            <p className="features-subtitle">A complete toolkit to organize your job search and maximize your opportunities.</p>
+          </div>
           
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">📊</div>
-              <Text variant="h3" size="lg" weight="semibold" color="primary">
-                Track Progress
-              </Text>
-              <Text variant="p" size="md" color="secondary">
-                Monitor your application status from applied to interviewed to hired. 
-                Keep track of every opportunity.
-              </Text>
+              <div className="feature-icon">📋</div>
+              <h3>Track Applications</h3>
+              <p>Keep all your job applications organized in one place with detailed information.</p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon">🔍</div>
-              <Text variant="h3" size="lg" weight="semibold" color="primary">
-                Search & Filter
-              </Text>
-              <Text variant="p" size="md" color="secondary">
-                Quickly find specific applications using our powerful search and 
-                filtering capabilities.
-              </Text>
+              <h3>Smart Filtering</h3>
+              <p>Filter and search through your applications by status, company, or role.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">📝</div>
-              <Text variant="h3" size="lg" weight="semibold" color="primary">
-                Detailed Records
-              </Text>
-              <Text variant="p" size="md" color="secondary">
-                Store company details, job requirements, contact information, 
-                and interview notes all in one place.
-              </Text>
+              <div className="feature-icon">📊</div>
+              <h3>Progress Insights</h3>
+              <p>See your application stats at a glance with visual progress indicators.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">📱</div>
-              <Text variant="h3" size="lg" weight="semibold" color="primary">
-                Mobile Friendly
-              </Text>
-              <Text variant="p" size="md" color="secondary">
-                Access your job applications anywhere, anytime. Our responsive 
-                design works perfectly on all devices.
-              </Text>
+              <div className="feature-icon">🛡️</div>
+              <h3>Secure Storage</h3>
+              <p>Your data stays private and secure with persistent local storage.</p>
+            </div>
+            
+            <div className="feature-card">
+              <div className="feature-icon">🎯</div>
+              <h3>Status Tracking</h3>
+              <p>Track each application from applied to interviewed to offer or rejection.</p>
+            </div>
+            
+            <div className="feature-card">
+              <div className="feature-icon">✨</div>
+              <h3>Clean Interface</h3>
+              <p>Modern, distraction-free design so you can focus on your job search.</p>
             </div>
           </div>
         </div>
@@ -89,21 +82,21 @@ const Landing: React.FC = () => {
 
       <section className="cta-section">
         <div className="container">
-          <div className="cta-content">
-            <Text variant="h2" size="2xl" weight="bold" color="white" align="center">
-              Ready to Get Organized?
-            </Text>
-            <Text variant="p" size="lg" color="white" align="center" className="cta-subtitle">
-              Join thousands of job seekers who have streamlined their application process.
-            </Text>
+          <div className="cta-card">
+            <h2 className="cta-title">Ready to Get Organized?</h2>
+            <p className="cta-text">Join thousands of job seekers who track their applications with JobTracker.</p>
             <Link to="/register">
               <Button variant="secondary" size="lg">
-                Start Tracking Today
+                Create Free Account →
               </Button>
             </Link>
           </div>
         </div>
       </section>
+      
+      <footer className="footer">
+        <p>© 2026 JobTracker. Built to help you land your dream job.</p>
+      </footer>
     </div>
   );
 };

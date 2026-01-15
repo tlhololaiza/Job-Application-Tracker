@@ -178,6 +178,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                 <option value="all">All Status</option>
                 <option value="Applied">Applied</option>
                 <option value="Interviewed">Interviewed</option>
+                <option value="Offered">Offered</option>
                 <option value="Rejected">Rejected</option>
               </select>
               
@@ -244,6 +245,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                       >
                         <option value="Applied">Applied</option>
                         <option value="Interviewed">Interviewed</option>
+                        <option value="Offered">Offered</option>
                         <option value="Rejected">Rejected</option>
                       </select>
                     </div>
