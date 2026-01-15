@@ -4,6 +4,7 @@ import Text from '../Text';
 import Button from '../Button';
 import type { User } from '../../types';
 import './Header.css';
+import logo from '../../assets/icon/icon.jpg';
 
 interface HeaderProps {
   isAuthenticated: boolean;
@@ -24,6 +25,7 @@ const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLogout, user }) => {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="header-logo">
+            <img src={logo} alt="JobTracker" className="logo-image" />
             <Text variant="h2" size="xl" weight="bold" color="primary">
               JobTracker
             </Text>

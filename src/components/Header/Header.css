@@ -20,11 +20,23 @@
 .header-logo {
   text-decoration: none;
   transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
 }
 
 .header-logo:hover {
   text-decoration: none;
   opacity: 0.8;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-nav {
