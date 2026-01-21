@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaExclamationTriangle, FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaTimes } from 'react-icons/fa';
 import './Toast.css';
 
 export interface ToastMessage {
@@ -67,23 +68,23 @@ const ToastItem: React.FC<ToastItemProps> = ({
         }}
         aria-label="Close notification"
       >
-        ✕
+        <FaTimes />
       </button>
     </div>
   );
 };
 
-function getIcon(type: string): string {
+function getIcon(type: string): React.ReactNode {
   switch (type) {
     case 'error':
-      return '⚠';
+      return <FaExclamationTriangle />;
     case 'success':
-      return '✓';
+      return <FaCheckCircle />;
     case 'warning':
-      return '!';
+      return <FaExclamationCircle />;
     case 'info':
     default:
-      return 'ℹ';
+      return <FaInfoCircle />;
   }
 }
 

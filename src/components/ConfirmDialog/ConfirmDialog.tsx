@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaTimes } from 'react-icons/fa';
 import Text from '../Text';
 import Button from '../Button';
 import './ConfirmDialog.css';
@@ -34,7 +35,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             {title}
           </Text>
           <button className="confirm-close" onClick={onCancel} aria-label="Close dialog">
-            ✕
+            <FaTimes />
           </button>
         </div>
 

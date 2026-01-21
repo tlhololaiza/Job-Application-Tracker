@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { FaBox, FaUsers, FaFileAlt, FaTimes, FaBriefcase } from 'react-icons/fa';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import JobCard from '../../components/JobCard';
@@ -178,28 +179,28 @@ const Home: React.FC<HomeProps> = ({ user }) => {
 
           <div className="stats-grid">
             <div className="stat-card">
-              <div className="stat-icon stat-total">📦</div>
+              <div className="stat-icon stat-total"><FaBox /></div>
               <div>
                 <p className="stat-label">Total Applications</p>
                 <p className="stat-value">{totalApplications}</p>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon stat-interviewed">👥</div>
+              <div className="stat-icon stat-interviewed"><FaUsers /></div>
               <div>
                 <p className="stat-label">Interviewed</p>
                 <p className="stat-value">{interviewedCount}</p>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon stat-applied">📝</div>
+              <div className="stat-icon stat-applied"><FaFileAlt /></div>
               <div>
                 <p className="stat-label">Applied</p>
                 <p className="stat-value">{appliedCount}</p>
               </div>
             </div>
             <div className="stat-card">
-              <div className="stat-icon stat-rejected">✖</div>
+              <div className="stat-icon stat-rejected"><FaTimes /></div>
               <div>
                 <p className="stat-label">Rejected</p>
                 <p className="stat-value">{rejectedCount}</p>
@@ -248,7 +249,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                     {editingJob ? 'Edit Job Application' : 'Add New Job Application'}
                   </Text>
                   <Button variant="ghost" size="sm" onClick={resetForm}>
-                    ✕
+                    <FaTimes />
                   </Button>
                 </div>
                 
@@ -324,7 +325,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
           <div className="jobs-section">
             {filteredJobs.length === 0 ? (
               <div className="empty-state">
-                <div className="empty-icon">👜</div>
+                <div className="empty-icon"><FaBriefcase /></div>
                 <Text variant="h3" size="lg" weight="medium" color="secondary" align="center">
                   {jobs.length === 0 ? 'No applications yet' : 'No jobs match your search'}
                 </Text>
