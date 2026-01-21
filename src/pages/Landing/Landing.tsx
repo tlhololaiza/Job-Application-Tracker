@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaClipboardList, FaSearch, FaChartBar, FaShieldAlt, FaBullseye, FaSparkles } from 'react-icons/fa';
+import { FaClipboardList, FaSearch, FaChartBar, FaShieldAlt, FaBullseye, FaMagic } from 'react-icons/fa';
 import Button from '../../components/Button';
 import './Landing.css';
 
@@ -72,7 +72,7 @@ const Landing: React.FC = () => {
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon"><FaSparkles /></div>
+              <div className="feature-icon"><FaMagic /></div>
               <h3>Clean Interface</h3>
               <p>Modern, distraction-free design so you can focus on your job search.</p>
             </div>
