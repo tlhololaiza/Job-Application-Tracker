@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaClipboardList, FaSearch, FaChartBar, FaShieldAlt, FaBullseye, FaSparkles } from 'react-icons/fa';
 import Button from '../../components/Button';
 import './Landing.css';
 
@@ -41,37 +42,37 @@ const Landing: React.FC = () => {
           
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">📋</div>
+              <div className="feature-icon"><FaClipboardList /></div>
               <h3>Track Applications</h3>
               <p>Keep all your job applications organized in one place with detailed information.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">🔍</div>
+              <div className="feature-icon"><FaSearch /></div>
               <h3>Smart Filtering</h3>
               <p>Filter and search through your applications by status, company, or role.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">📊</div>
+              <div className="feature-icon"><FaChartBar /></div>
               <h3>Progress Insights</h3>
               <p>See your application stats at a glance with visual progress indicators.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">🛡️</div>
+              <div className="feature-icon"><FaShieldAlt /></div>
               <h3>Secure Storage</h3>
               <p>Your data stays private and secure with persistent local storage.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">🎯</div>
+              <div className="feature-icon"><FaBullseye /></div>
               <h3>Status Tracking</h3>
               <p>Track each application from applied to interviewed to offer or rejection.</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">✨</div>
+              <div className="feature-icon"><FaSparkles /></div>
               <h3>Clean Interface</h3>
               <p>Modern, distraction-free design so you can focus on your job search.</p>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import './NotFound.css';
@@ -38,7 +39,7 @@ const NotFound: React.FC = () => {
           </div>
           
           <div className="error-illustration">
-            <div className="illustration-icon">🔍</div>
+            <div className="illustration-icon"><FaSearch /></div>
             <Text variant="p" size="md" color="muted" align="center">
               The page you're looking for seems to have wandered off...
             </Text>
