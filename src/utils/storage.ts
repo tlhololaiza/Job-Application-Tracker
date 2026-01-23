@@ -1,6 +1,6 @@
 import type { Job, User } from '../types';
 
-const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const getStoredUsers = async (): Promise<User[]> => {
   const res = await fetch(`${API_URL}/users`);

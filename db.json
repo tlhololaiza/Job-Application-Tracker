@@ -9,6 +9,11 @@
       "id": "1768515496959",
       "username": "tshwane",
       "password": "123456"
+    },
+    {
+      "id": "1769160952700",
+      "username": "Junior",
+      "password": "123456"
     }
   ],
   "jobs": [
@@ -39,6 +44,20 @@
       "address": "",
       "notes": "",
       "userId": "1768515496959"
+    },
+    {
+      "id": "1769161043073",
+      "companyName": "mLab",
+      "role": "Facilitator",
+      "status": "Rejected",
+      "dateApplied": "2026-01-23",
+      "description": "Training upcoming devs\n",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1769160952700"
     }
   ]
 }
