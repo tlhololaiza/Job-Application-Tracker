@@ -95,6 +95,14 @@
   text-decoration: none;
 }
 
+.job-card-actions a:first-child .button-component {
+  border-color: var(--color-teal);
+}
+
+.job-card-actions a:first-child .button-component:hover {
+  border-color: var(--color-navy);
+}
+
 /* Responsive Design */
 @media (max-width: 320px) {
   .job-card {

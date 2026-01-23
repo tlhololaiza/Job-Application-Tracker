@@ -1,7 +1,20 @@
 .home-page {
   min-height: calc(100vh - 80px);
-  background-color: var(--color-background);
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.15) 0%, rgba(44, 62, 80, 0.15) 100%);
   padding: var(--spacing-4) 0 var(--spacing-10);
+  position: relative;
+}
+
+.home-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(52, 152, 219, 0.25) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(44, 62, 80, 0.25) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .dashboard {
@@ -9,6 +22,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-6);
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-top {
@@ -33,6 +48,30 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-teal) 0%, var(--color-navy) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
 }
 
 .stat-icon {
@@ -42,7 +81,8 @@
   display: grid;
   place-items: center;
   font-size: 1.5rem;
-  background-color: var(--color-gray-100);
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(44, 62, 80, 0.1) 100%);
+  border: 2px solid rgba(52, 152, 219, 0.2);
 }
 
 .stat-total { color: var(--color-primary); }

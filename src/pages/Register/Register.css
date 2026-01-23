@@ -4,7 +4,20 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-10) var(--spacing-4);
-  background: var(--color-background);
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.15) 0%, rgba(52, 152, 219, 0.15) 100%);
+  position: relative;
+}
+
+.register-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.25) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(44, 62, 80, 0.25) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .register-form {
@@ -20,6 +33,9 @@
   max-width: 520px;
   width: 100%;
   padding: var(--spacing-10);
+  position: relative;
+  z-index: 1;
+  border-top: 3px solid var(--color-navy);
 }
 
 .form-header {

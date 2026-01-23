@@ -58,6 +58,48 @@
       "address": "",
       "notes": "",
       "userId": "1769160952700"
+    },
+    {
+      "id": "1769163413180",
+      "companyName": "mLab",
+      "role": "Cleaner",
+      "status": "Applied",
+      "dateApplied": "2026-01-23",
+      "description": "",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1769160952700"
+    },
+    {
+      "id": "1769163426386",
+      "companyName": "mLab",
+      "role": "Senior",
+      "status": "Applied",
+      "dateApplied": "2026-01-23",
+      "description": "",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1769160952700"
+    },
+    {
+      "id": "1769163465664",
+      "companyName": "CodeTribe",
+      "role": "IT Tech",
+      "status": "Applied",
+      "dateApplied": "2026-01-23",
+      "description": "",
+      "requirements": "",
+      "duties": "",
+      "contactDetails": "",
+      "address": "",
+      "notes": "",
+      "userId": "1769160952700"
     }
   ]
 }

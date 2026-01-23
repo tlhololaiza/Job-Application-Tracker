@@ -52,12 +52,12 @@ const Header: React.FC<HeaderProps> = ({ isAuthenticated, onLogout, user }) => {
               <div className="auth-buttons">
                 <Link to="/login">
                   <Button variant="ghost" size="sm">
-                    Login
+                    Sign in
                   </Button>
                 </Link>
                 <Link to="/register">
                   <Button variant="primary" size="sm">
-                    Register
+                    Sign up
                   </Button>
                 </Link>
               </div>

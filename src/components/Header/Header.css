@@ -63,6 +63,14 @@
   gap: var(--spacing-2);
 }
 
+.auth-buttons a:first-child .button-component {
+  border-color: var(--color-teal);
+}
+
+.auth-buttons a:first-child .button-component:hover {
+  border-color: var(--color-navy);
+}
+
 /* Responsive Design */
 @media (max-width: 320px) {
   .header-content {
