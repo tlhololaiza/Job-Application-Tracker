@@ -128,6 +128,7 @@
   --z-sticky: 1020;
   --z-modal: 1050;
   --z-tooltip: 1070;
+  --z-toast: 1080;
 }
 
 /* Base Styles */
