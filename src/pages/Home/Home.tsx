@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import JobCard from '../../components/JobCard';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import type { Job, User } from '../../types';
-import { getUserJobs, saveUserJobs } from '../../utils/storage';
+import { getUserJobs, addJobForUser, updateJobForUser, deleteJobForUser } from '../../utils/storage';
 import './Home.css';
 
 interface HomeProps {
@@ -68,13 +68,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     setSortOrder(sort);
   }, [searchParams]);
 
-  const saveJobs = async (updatedJobs: Job[]) => {
-    setJobs(updatedJobs);
-    if (user) {
-      await saveUserJobs(user.id, updatedJobs);
-    }
-  };
-
   const filteredJobs = jobs
     .filter(job => {
       const matchesSearch = job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -88,24 +81,23 @@ const Home: React.FC<HomeProps> = ({ user }) => {
       return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
     });
 
-  const handleAddJob = (e: React.FormEvent) => {
+  const handleAddJob = async (e: React.FormEvent) => {
     e.preventDefault();
     const newJob: Job = {
       id: Date.now().toString(),
       ...formData
     };
-    saveJobs([...jobs, newJob]);
+    setJobs(prev => [...prev, newJob]);
+    if (user) await addJobForUser(user.id, newJob);
     resetForm();
   };
 
-  const handleEditJob = (e: React.FormEvent) => {
+  const handleEditJob = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingJob) return;
-    
-    const updatedJobs = jobs.map(job => 
-      job.id === editingJob.id ? { ...editingJob, ...formData } : job
-    );
-    saveJobs(updatedJobs);
+    const updated = { ...editingJob, ...formData };
+    setJobs(prev => prev.map(job => job.id === editingJob.id ? updated : job));
+    if (user) await updateJobForUser(user.id, editingJob.id, formData);
     resetForm();
   };
 
@@ -113,10 +105,10 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     setDeleteConfirm({ isOpen: true, jobId: id });
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (deleteConfirm.jobId) {
-      const updatedJobs = jobs.filter(job => job.id !== deleteConfirm.jobId);
-      saveJobs(updatedJobs);
+      setJobs(prev => prev.filter(job => job.id !== deleteConfirm.jobId));
+      if (user) await deleteJobForUser(user.id, deleteConfirm.jobId);
       setDeleteConfirm({ isOpen: false, jobId: null });
     }
   };

@@ -6,94 +6,19 @@
       "password": "password"
     },
     {
-      "id": "1768515496959",
+      "id": "1773302402822",
       "username": "tshwane",
-      "password": "123456"
-    },
-    {
-      "id": "1769160952700",
-      "username": "Junior",
-      "password": "123456"
+      "password": "password"
     }
   ],
   "jobs": [
     {
-      "id": "1768515605795",
-      "companyName": "Shoprite",
-      "role": "Cashier",
+      "id": "1773301624123",
+      "companyName": "mLab-CodeTribe",
+      "role": "Junior dev",
       "status": "Interviewed",
-      "dateApplied": "2026-01-15",
-      "description": "Till work",
-      "requirements": "",
-      "duties": "",
-      "contactDetails": "",
-      "address": "",
-      "notes": "",
-      "userId": "1768515496959"
-    },
-    {
-      "id": "1769161043073",
-      "companyName": "mLab",
-      "role": "Facilitator",
-      "status": "Rejected",
-      "dateApplied": "2026-01-23",
-      "description": "Training upcoming devs\n",
-      "requirements": "",
-      "duties": "",
-      "contactDetails": "",
-      "address": "",
-      "notes": "",
-      "userId": "1769160952700"
-    },
-    {
-      "id": "1769163465664",
-      "companyName": "CodeTribe",
-      "role": "IT Tech",
-      "status": "Applied",
-      "dateApplied": "2026-01-23",
-      "description": "",
-      "requirements": "",
-      "duties": "",
-      "contactDetails": "",
-      "address": "",
-      "notes": "",
-      "userId": "1769160952700"
-    },
-    {
-      "id": "1769163426386",
-      "companyName": "mLab",
-      "role": "Dev Intern",
-      "status": "Interviewed",
-      "dateApplied": "2026-01-23",
-      "description": "",
-      "requirements": "",
-      "duties": "",
-      "contactDetails": "",
-      "address": "",
-      "notes": "",
-      "userId": "1769160952700"
-    },
-    {
-      "id": "1769163413180",
-      "companyName": "mLab",
-      "role": "Cleaner",
-      "status": "Applied",
-      "dateApplied": "2026-01-23",
-      "description": "",
-      "requirements": "",
-      "duties": "",
-      "contactDetails": "",
-      "address": "",
-      "notes": "",
-      "userId": "1769160952700"
-    },
-    {
-      "id": "1768515477806",
-      "companyName": "mLab",
-      "role": "Trainee",
-      "status": "Applied",
-      "dateApplied": "2025-10-16",
-      "description": "Coding",
+      "dateApplied": "2026-03-12",
+      "description": "Training to become a Software dev",
       "requirements": "",
       "duties": "",
       "contactDetails": "",
@@ -102,18 +27,19 @@
       "userId": "1768515422021"
     },
     {
-      "id": "1769164778956",
-      "companyName": "mLab",
-      "role": "Senior Dev",
+      "id": "1773302459912",
+      "companyName": "FullFunnel",
+      "role": "Software developer",
       "status": "Rejected",
-      "dateApplied": "2026-01-23",
+      "dateApplied": "2026-03-12",
       "description": "",
       "requirements": "",
       "duties": "",
       "contactDetails": "",
       "address": "",
       "notes": "",
-      "userId": "1768515422021"
+      "userId": "1773302402822"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -45,9 +45,10 @@ export const getUserJobsKey = (userId: string): string => {
 };
 
 export const getUserJobs = async (userId: string): Promise<Job[]> => {
-  const res = await fetch(`${API_URL}/jobs?userId=${encodeURIComponent(userId)}`);
+  const res = await fetch(`${API_URL}/jobs`);
   if (!res.ok) return [];
-  return res.json();
+  const all: Job[] = await res.json();
+  return all.filter(job => job.userId === userId);
 };
 
 export const saveUserJobs = async (userId: string, jobs: Job[]): Promise<void> => {
