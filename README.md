@@ -49,7 +49,7 @@ A modern, elegant job application tracking system built with React, TypeScript, 
 
 3. **Start the JSON server** (in a separate terminal)
    ```bash
-   npx json-server --watch db.json --port 3001
+   npm run server
    ```
 
 4. **Start the development server**
